@@ -83,33 +83,171 @@ public class TicTacToe implements ActionListener{
 	public void firstTurn() {
 		
 		try {
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 			e.printStackTrace(); 
 		}
 		
-		if(random.nextInt(2)==0) {
-			player1_turn = true;
-			textfield.setText("X turn");
-		}
-		else {
-			player1_turn = false;
-			textfield.setText("O turn");
-		}
-//		player1_turn = true;
-//		textfield.setText("X turn");
+		player1_turn = true;
+		textfield.setText("X turn");
 	}
 	
 	public void check() {
+		//X win conditions
+		//top horizontal
+		if(
+				(buttons[0].getText().equals("X")) &&
+				(buttons[1].getText().equals("X")) &&
+				(buttons[2].getText().equals("X"))
+				) {
+			xWins(0,1,2);
+		}
+		//middle horizontal
+		if(
+				(buttons[3].getText().equals("X")) &&
+				(buttons[4].getText().equals("X")) &&
+				(buttons[5].getText().equals("X"))
+				) {
+			xWins(3,4,5);
+		}
+		//bottom horizontal
+		if(
+				(buttons[6].getText().equals("X")) &&
+				(buttons[7].getText().equals("X")) &&
+				(buttons[8].getText().equals("X"))
+				) {
+			xWins(6,7,8);
+		}
+		//left vertical
+		if(
+				(buttons[0].getText().equals("X")) &&
+				(buttons[3].getText().equals("X")) &&
+				(buttons[6].getText().equals("X"))
+				) {
+			xWins(0,3,6);
+		}
+		//middle vertical
+		if(
+				(buttons[1].getText().equals("X")) &&
+				(buttons[4].getText().equals("X")) &&
+				(buttons[7].getText().equals("X"))
+				) {
+			xWins(1,4,7);
+		}
+		//right vertical
+		if(
+				(buttons[2].getText().equals("X")) &&
+				(buttons[5].getText().equals("X")) &&
+				(buttons[8].getText().equals("X"))
+				) {
+			xWins(2,5,8);
+		}
+		//diagonal
+		if(
+				(buttons[0].getText().equals("X")) &&
+				(buttons[4].getText().equals("X")) &&
+				(buttons[8].getText().equals("X"))
+				) {
+			xWins(0,4,8);
+		}
+		//diagonal
+		if(
+				(buttons[2].getText().equals("X")) &&
+				(buttons[4].getText().equals("X")) &&
+				(buttons[6].getText().equals("X"))
+				) {
+			xWins(2,4,6);
+		}
 		
+		
+		//O win conditions
+		//top horizontal
+		if(
+				(buttons[0].getText().equals("O")) &&
+				(buttons[1].getText().equals("O")) &&
+				(buttons[2].getText().equals("O"))
+				) {
+			oWins(0,1,2);
+		}
+		//middle horizontal
+		if(
+				(buttons[3].getText().equals("O")) &&
+				(buttons[4].getText().equals("O")) &&
+				(buttons[5].getText().equals("O"))
+				) {
+			oWins(3,4,5);
+		}
+		//bottom horizontal
+		if(
+				(buttons[6].getText().equals("O")) &&
+				(buttons[7].getText().equals("O")) &&
+				(buttons[8].getText().equals("O"))
+				) {
+			oWins(6,7,8);
+		}
+		//left vertical
+		if(
+				(buttons[0].getText().equals("O")) &&
+				(buttons[3].getText().equals("O")) &&
+				(buttons[6].getText().equals("O"))
+				) {
+			oWins(0,3,6);
+		}
+		//middle vertical
+		if(
+				(buttons[1].getText().equals("O")) &&
+				(buttons[4].getText().equals("O")) &&
+				(buttons[7].getText().equals("O"))
+				) {
+			oWins(1,4,7);
+		}
+		//right vertical
+		if(
+				(buttons[2].getText().equals("O")) &&
+				(buttons[5].getText().equals("O")) &&
+				(buttons[8].getText().equals("O"))
+				) {
+			oWins(2,5,8);
+		}
+		//diagonal
+		if(
+				(buttons[0].getText().equals("O")) &&
+				(buttons[4].getText().equals("O")) &&
+				(buttons[8].getText().equals("O"))
+				) {
+			oWins(0,4,8);
+		}
+		//diagonal
+		if(
+				(buttons[2].getText().equals("O")) &&
+				(buttons[4].getText().equals("O")) &&
+				(buttons[6].getText().equals("O"))
+				) {
+			oWins(0,4,8);
+		}
 	}
 	
 	public void xWins(int a, int b, int c) {
+		textfield.setText("X wins!");
+		buttons[a].setBackground(Color.GREEN);
+		buttons[b].setBackground(Color.GREEN);
+		buttons[c].setBackground(Color.GREEN);
 		
+		for(int i=0; i<9; i++) {
+			buttons[i].setEnabled(false);
+		}
+
 	}
 	
 	public void oWins(int a, int b, int c) {
+		textfield.setText("O wins!");
+		buttons[a].setBackground(Color.GREEN);
+		buttons[b].setBackground(Color.GREEN);
+		buttons[c].setBackground(Color.GREEN);
 		
+		for(int i=0; i<9; i++) {
+			buttons[i].setEnabled(false);
+		}
 	}
 	
 }
